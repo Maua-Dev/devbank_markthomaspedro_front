@@ -1,0 +1,73 @@
+@import "tailwindcss";
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+  }
+  header {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  label{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d0e7ff;
+    color: black;
+    text-align: left;
+    padding: 0.7rem 0.7rem;
+    border-radius: 8px;
+  }
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .user-info {
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    color: #63aefe;
+    text-align: left;
+  }
+  .main {
+    padding: 3rem;
+    text-align: center;
+  }
+  .actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center; /* você pode mudar pra space-between ou space-around */
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+  .card {
+    background-color: #d0e7ff;
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+    outline: 10px solid #a8d0f0;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 24px;
+    text-align: center;
+  }
+  .card:hover {
+    background-color: #a8d0f0;
+  }
+  .saldo {
+    background-color: #63aefe;
+    color: white;
+    display: inline-block;
+    text-align: left;
+    padding: 0.5rem 2rem;
+    margin: 0.01rem 0.01rem;
+    border-radius: 8px;
+  }
