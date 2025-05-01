@@ -1,8 +1,11 @@
 // src/app/App.tsx
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Retirar from "../pages/retirar.tsx";
-import Transacoes from "../pages/transacoes.tsx";
-import Depositar from "../pages/Depositar.tsx";
+import Retirar from "./pages/withdraw.tsx";
+import Transacoes from "./pages/history.tsx";
+import Depositar from "./pages/deposit.tsx";
+import depo from '../assets/depo.png';
+import reti from '../assets/reti.png';
+import hist from '../assets/hist.png';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ function HomePage() {
         <div className="logo"><span>DEV</span> BANK</div>
         <div className="user-info">
           Nome: Mark<br />
-          Agência: 0000<br />
+          Agência: 0000<br /> 
           Conta: 00000-0<br />
         </div>
       </header>
@@ -24,19 +27,19 @@ function HomePage() {
         </label>
 
         <div className="actions">
-          <button className="card" onClick={() => navigate("/depositar")}>
+          <button className="card" onClick={() => navigate("/deposit")}>
             <strong>Depositar</strong>
-            <img src="..." alt="Depositar" />
+            <img src={depo} alt="Depositar" />
           </button>
 
-          <button className="card" onClick={() => navigate("/retirar")}>
+          <button className="card" onClick={() => navigate("/withdraw")}>
             <strong>Retirar</strong>
-            <img src="https://cdn-icons-png.flaticon.com/256/1570/1570917.png" alt="Retirar" />
+            <img src={reti} alt="Retirar" />
           </button>
 
-          <button className="card" onClick={() => navigate("/transacoes")}>
+          <button className="card" onClick={() => navigate("/history")}>
             <strong>Transações</strong>
-            <img src="https://cdn-icons-png.flaticon.com/256/4475/4475436.png" alt="Transação" />
+            <img src={hist} alt="Transação" />
           </button>
         </div>
       </div>
@@ -48,9 +51,9 @@ export function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/depositar" element={<Depositar />} />
-      <Route path="/retirar" element={<Retirar />} />
-      <Route path="/transacoes" element={<Transacoes />} />
+      <Route path="/deposit" element={<Depositar />} />
+      <Route path="/withdraw" element={<Retirar />} />
+      <Route path="/history" element={<Transacoes />} />
     </Routes>
   );
 }
