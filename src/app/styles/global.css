@@ -112,3 +112,19 @@ body {
   .voltar:hover {
     background-color: #47a1eb;
   }
+
+  .deposit{
+   border-radius: 8px;
+   background-color: #63aefe;
+   color: white;
+   text-align: center;
+   padding: 0.5rem 2rem;
+  }
+  .quantity{
+    border-radius: 8px;
+   background-color: #63aefe;
+   color: white;
+   text-align: center;
+   padding: 0.5rem 2rem;
+   margin: 1rem 1rem;
+  }
