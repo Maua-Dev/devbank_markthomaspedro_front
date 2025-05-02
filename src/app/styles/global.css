@@ -1,0 +1,114 @@
+@import "tailwindcss";
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+  }
+  header {
+    /* cor_texto */
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    /* posicao */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  label{
+    /* cor_texto */
+    font-size: 2rem;
+    background-color: #d0e7ff;
+    color: black;
+    text-align: left;
+    /* posicao */
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0.7rem;
+    border-radius: 8px;
+  }
+  .logo {
+    font-size: 5rem;
+    font-weight: bold;
+  }
+  .user-info {
+    /* cor_texto */
+    background-color: white;
+    color: #2475cc;
+    text-align: left;
+    font-size: 1.5rem;
+    /* posicao */
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+  }
+  .main {
+    padding: 3rem;
+    text-align: center;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+  .card {
+    cursor: pointer;
+    transition: 0.3s;
+    /* cor_texto */
+    background-color: #d0e7ff;
+    outline: 10px solid #a8d0f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    /* posicao */
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+  .card:hover {
+    background-color: #a8d0f0;
+  }
+  .history-card {
+    /* cor_texto */
+    background-color: #c2e0ff;
+    color: blue;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
+    text-align: left;
+    /* posicao */
+    margin-top: 2rem;
+    gap: 2rem;
+    padding: 6rem;
+    border-radius: 10px;
+  }
+  .saldo {
+    /* cor_texto */
+    background-color: #63aefe;
+    color: white;
+    text-align: left;
+    /* posicao */
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    margin: 0.01rem 0.01rem;
+    border-radius: 8px;
+  }
+  .voltar {
+    cursor: pointer;
+    /* cor_texto */
+    background-color: #d0e7ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    /* posicao */
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+
+  }
+  .voltar:hover {
+    background-color: #47a1eb;
+  }
