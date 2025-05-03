@@ -9,13 +9,12 @@ const denominations = [
   { value: 50, label: "50 R$" },
   { value: 100, label: "100 R$" },
   { value: 200, label: "200 R$" },
-]
+];
 const Depositar = () => {
   const navigate = useNavigate();
   const [Quantity, SetQuantity] = useState<Record<number, number>>({});
   const SaldoAtual = 0;
   const Q2 = 0;
-
 
   return (
     <body>
@@ -23,36 +22,39 @@ const Depositar = () => {
         <div className="logo">DEV BANK</div>
         <div className="user-info">
           Nome: Mark <br />
-          Agência: 0000<br />
-          Conta: 00000-0<br />
+          Agência: 0000
+          <br />
+          Conta: 00000-0
+          <br />
         </div>
       </header>
-      <div className="main">
+      <div className="label-deposit">
         <label>
           <div className="deposit">Saldo Atual: 000</div>
           <div className="quantity"> Quantidade Depositada: 000</div>
           <div className="quantity"> Total: 000</div>
         </label>
       </div>
-
+      <div style={{width: "100%"}}>
+        <label className="text" style={{width: "100%"}}>selecione a quantidade a ser depositada</label>
+      </div>
       <div className="botao-container">
-        <p className="select">Selecione as Cédulas <br />e a quantidade que <br /> você deseja</p>
         <div className="nota-item">
-          <button className="button-cash">2 R$</button>
+          <button className="button-cash2">2 R$</button>
           <div className="quantidade">
             <label>Quantidade</label>
             <input type="number" min="0" />
           </div>
         </div>
         <div className="nota-item">
-          <button className="button-cash">5 R$</button>
+          <button className="button-cash2">5 R$</button>
           <div className="quantidade">
             <label>Quantidade</label>
             <input type="number" min="0" />
           </div>
         </div>
         <div className="nota-item">
-          <button className="button-cash">10 R$</button>
+          <button className="button-cash2">10 R$</button>
           <div className="quantidade">
             <label>Quantidade</label>
             <input type="number" min="0" />

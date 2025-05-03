@@ -129,44 +129,15 @@ body {
    margin: 1rem 1rem;
   }
 
-  .button-cash{
-    cursor: pointer;
-    transition: 0.3s;
-    /* cor_texto */
-    background-color: rgb(51, 151, 209);
-    outline: 10px solid rgb(186, 196, 228);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-    font-size: 24px;
-    text-align: center;
-    /* posicao */
-    padding: 2rem;
-    border-radius: 10px;
-    flex: 1;
-    min-width: 0;
-    color: white;
-  }
-  .button-cash.hover{
-    background-color: #a8d0f0;
-  }
-  .select{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   
-   /*posição*/
-   padding: 2rem;
-    border-radius: 10px;
-    flex: 1;
-    min-width: 0;
-    
-  }
+
 
   .botao-container {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin-top: 1rem;
+    -ms-flex-align: center;
+  
   }
   
   .button-cash2{
@@ -197,9 +168,9 @@ body {
   }
   
   .quantidade {
-    margin-top: 8px;
+    margin-top: 1rem;
     text-align: center;
-    flex-direction: line;
+    -ms-flex-align: center;
   }
   
   .quantidade label {
@@ -214,4 +185,16 @@ body {
     padding: 4px;
     text-align: center;
     outline: auto;
+    flex-direction: line;
+  }
+
+  .label-deposit{
+    text-align: center;
+    padding-top: 3rem;
+    padding-inline: 3rem;
+  }
+
+  .text{
+    text-align: center;
+    padding-inline: 3rem;
   }
