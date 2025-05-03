@@ -121,10 +121,97 @@ body {
    padding: 0.5rem 2rem;
   }
   .quantity{
-    border-radius: 8px;
+  border-radius: 8px;
    background-color: #63aefe;
    color: white;
    text-align: center;
    padding: 0.5rem 2rem;
    margin: 1rem 1rem;
+  }
+
+  .button-cash{
+    cursor: pointer;
+    transition: 0.3s;
+    /* cor_texto */
+    background-color: rgb(51, 151, 209);
+    outline: 10px solid rgb(186, 196, 228);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    /* posicao */
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+    color: white;
+  }
+  .button-cash.hover{
+    background-color: #a8d0f0;
+  }
+  .select{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+   /*posição*/
+   padding: 2rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+    
+  }
+
+  .botao-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .button-cash2{
+    cursor: pointer;
+    transition: 0.3s;
+    /* cor_texto */
+    background-color: rgb(51, 151, 209);
+    outline: 10px solid rgb(186, 196, 228);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    /* posicao */
+    padding: 3.75rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+    color: white;
+  }
+  .button-cash2.hover{
+    background-color: #a8d0f0;
+  }
+  .nota-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .quantidade {
+    margin-top: 8px;
+    text-align: center;
+    flex-direction: line;
+  }
+  
+  .quantidade label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+    flex-direction: line;
+  }
+  
+  .quantidade input {
+    width: 60px;
+    padding: 4px;
+    text-align: center;
+    outline: auto;
   }
