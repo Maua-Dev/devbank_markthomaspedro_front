@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { API_URL } from "../environment";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
