@@ -35,8 +35,19 @@ const Depositar = () => {
           <div className="quantity"> Total: 000</div>
         </label>
       </div>
-      <div style={{width: "100%"}}>
-        <label className="text" style={{width: "100%"}}>selecione a quantidade a ser depositada</label>
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: "#d0e7ff",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50px",
+        }}
+      >
+        <span style={{ fontSize: 24 }}>
+          selecione a quantidade a ser depositada
+        </span>
       </div>
       <div className="botao-container">
         <div className="nota-item">

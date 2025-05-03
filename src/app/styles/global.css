@@ -168,25 +168,24 @@ body {
   }
   
   .quantidade {
-    margin-top: 1rem;
-    text-align: center;
-    -ms-flex-align: center;
-  }
-  
-  .quantidade label {
-    font-size: 14px;
-    margin-bottom: 4px;
-    display: block;
-    flex-direction: line;
-  }
-  
-  .quantidade input {
-    width: 60px;
-    padding: 4px;
-    text-align: center;
-    outline: auto;
-    flex-direction: line;
-  }
+  margin-top: 1rem;
+  text-align: center;
+  -ms-flex-align: center;
+  display: flex;
+}
+
+.quantidade label {
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.quantidade input {
+  width: 60px;
+  padding: 4px;
+  text-align: center;
+  outline: auto;
+}
 
   .label-deposit{
     text-align: center;
