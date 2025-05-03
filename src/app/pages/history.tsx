@@ -1,42 +1,79 @@
-import React from "react";
+import { useEffect } from "react";
 import { UNSAFE_useScrollRestoration, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { API_URL } from "../environment";
+
+type Transaction = {
+  type: string
+  timestamp: number
+  current_balance: number
+  value: number
+}
 
 type historyResponse = {
-  valor: string
-  data: string
-  saldo: string
-  tipo: string
+  all_transactions: Transaction[];
+}
+
+type userResponse = {
+  name: string
+  agency: string
+  account: string
+  current_balance: number
 }
 
 const transacoes = () => {
   const navigate = useNavigate();
   const [history, setHistory] = useState<historyResponse>();
+  const [usuario, setUsuario] = useState<userResponse>();
 
-  async function getHist(): Promise<historyResponse>{
-    const dados = await fetch("URL")
+  async function getHist() {
+    const dados = await fetch(API_URL + "/history", {
+      method: "GET"
+    })
 
-    return (await dados.json()) as historyResponse
+    const response = (await dados.json()) as historyResponse
+    setHistory(response)
   }
+
+  async function getUsuario() {
+    const dados = await fetch(API_URL, {
+      method: "GET"
+    })
+
+    const response = (await dados.json()) as userResponse
+    setUsuario(response)
+  }
+
+  function formatDate(timestamp: number) {
+    const date = new Date(timestamp);
+    return date.toLocaleString("pt-BR");
+  }
+  
+  useEffect(() => { getHist() }, [])
+  useEffect(() => { getUsuario() }, [])
 
   return (
     <body>
       <header>
         <div className="logo"><span>DEV</span> BANK</div>
         <div className="user-info">
-          Nome: Mark<br />
-          Agência: 0000<br />
-          Conta: 00000-0<br />
+          <div><b>Nome:</b> {usuario?.name}</div>
+          <div><b>Agência:</b> {usuario?.agency}</div>
+          <div><b>Conta:</b> {usuario?.account}</div>
         </div>
       </header>
+      
       <div className="main">
-        <label>Histórico de Transações</label>
+        <label className="label">Histórico de Transações</label>
 
-        <div>
-          <h1 className="history-card">
-            informacoes das transacoes
-          </h1>
-        </div>
+        {history?.all_transactions.map((item) => (
+          <div className="history-card" key={item.timestamp}>
+            <div><b>Tipo:</b> {item.type}</div>
+            <div><b>Valor:</b> {item.value}</div>
+            <div><b>Saldo:</b> {item.current_balance}</div>
+            <div><b>Tempo:</b> {formatDate(item.timestamp)}</div>
+          </div>
+        ))}
 
         <button className="voltar" onClick={() => navigate("/")}>
           Voltar
