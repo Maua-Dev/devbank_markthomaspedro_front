@@ -35,8 +35,9 @@ function HomePage() {
 
   return (
     <body>
-      <header>
+      <header className="header">
         <div className="logo"><span><button className="meme" onClick={() => navigate("/meme")}>D</button>EV</span> BANK</div>
+        <p>by Mark Downey, Thomas Machado e Pedro Riccomi</p>
         <div className="user-info">
           <div><b>Nome:</b> {usuario?.name}</div>
           <div><b>Agência:</b> {usuario?.agency}</div>
@@ -51,17 +52,17 @@ function HomePage() {
 
         <div className="actions">
           <button className="card" onClick={() => navigate("/deposit")}>
-            <strong>Depositar</strong>
-            <img src={depo} alt="Depositar" />
+            <span>Depositar</span>
+            <img src={depo} alt="Depositar"/>
           </button>
 
           <button className="card" onClick={() => navigate("/withdraw")}>
-            <strong>Retirar</strong>
+            <span>Retirar</span>
             <img src={reti} alt="Retirar" />
           </button>
 
           <button className="card" onClick={() => navigate("/history")}>
-            <strong>Transações</strong>
+            <span>Transações</span>
             <img src={hist} alt="Transação" />
           </button>
         </div>

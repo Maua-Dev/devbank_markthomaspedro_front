@@ -82,10 +82,8 @@ const Depositar = () => {
 
   return (
     <body>
-      <header>
+      <header className="header">
         <div className="logo">DEV BANK</div>
-        <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
-        <button className="voltar" onClick={postDeposit}>Depositar</button>
         <div className="user-info">
           <div><b>Nome:</b> {usuario?.name}</div>
           <div><b>Agência:</b> {usuario?.agency}</div>
@@ -94,8 +92,8 @@ const Depositar = () => {
       </header>
       <div className="label-deposit">
         <label className="label">
-          <div className="deposit"><b>Saldo:</b> R$ {usuario?.current_balance}</div>
-          <div className="quantity">
+          <div className="saldo"><b>Saldo:</b> R$ {usuario?.current_balance}</div>
+          <div className="saldo">
             Quantidade Depositada:{" "}
             {Object.entries(Quantity).reduce(
               (total, [val, qty]) => total + Number(val) * qty,
@@ -103,20 +101,17 @@ const Depositar = () => {
             )}{" "}
             R$
           </div>
-
         </label>
       </div>
-      <div>
-        <span className="selecionar">
-          selecione a quantidade a ser depositada
-        </span>
-      </div>
       <div className="botao-container">
+        <span className="selecionar">
+          Selecione a quantidade que deseja depositar:
+        </span>
         {denominations.map((denom) => (
           <div key={denom.value} className="nota-item">
             <button className="button-cash2">{denom.label}</button>
             <div className="quantidade">
-              <label className="label">Quantidade</label>
+              <span>Quantidade</span>
               <input
                 type="number"
                 min="0"
@@ -129,6 +124,11 @@ const Depositar = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="voltar-espacamento">
+        <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
+        <button className="voltar" onClick={postDeposit}>Depositar</button>
       </div>
 
       {/* ALERTA DE DEPÓSITO SUSPEITO */}

@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+.header {
+  /* cor_texto */
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  /* posicao */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
 .history-card {
   /* cor_texto */
   background-color: #c2e0ff;
@@ -16,16 +26,7 @@
   display: flex;
 }
 
-header {
-  /* cor_texto */
-  background-color: #007bff;
-  color: white;
-  display: flex;
-  /* posicao */
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
+
 
 .label {
   /* cor_texto */
@@ -57,40 +58,6 @@ header {
   border-radius: 10px;
   padding: 0.5rem 2rem;
 }
-
-.main {
-  padding: 3rem;
-  text-align: center;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0 2rem;
-}
-
-.card {
-  cursor: pointer;
-  transition: 0.3s;
-  /* cor_texto */
-  background-color: #d0e7ff;
-  outline: 10px solid #a8d0f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-  /* posicao */
-  padding: 2rem;
-  border-radius: 10px;
-  flex: 1;
-  min-width: 0;
-}
-
-.card:hover {
-  background-color: #a8d0f0;
-}
-
 .saldo {
   /* cor_texto */
   background-color: #63aefe;
@@ -103,19 +70,75 @@ header {
   border-radius: 8px;
 }
 
+.main {
+  padding: 3rem;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+
+.card {
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #d0e7ff;
+  outline: 10px solid #a8d0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.card span {
+  font-weight: bold;
+  font-size: 40px; /* Aumenta o tamanho do texto */
+  margin-bottom: 2rem; /* Aumenta o espaço entre o texto e a imagem */
+}
+
+
+
+.card:hover {
+  background-color: #a8d0f0;
+}
+.voltar-espacamento{
+  margin-top: 2rem;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .voltar {
   cursor: pointer;
   /* cor_texto */
+  color: white;
   background-color: #098cf8;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-weight: bold;
   font-size: 24px;
   text-align: center;
   /* posicao */
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
   margin-top: 2rem;
   padding: 1rem 3rem;
   border-radius: 8px;
-
 }
 
 .voltar:hover {
@@ -141,62 +164,11 @@ header {
 
 
 
-.botao-container {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  -ms-flex-align: center;
 
-}
 
-.button-cash2 {
-  transition: 0.3s;
-  /* cor_texto */
-  background-color: rgb(51, 151, 209);
-  outline: 10px solid rgb(186, 196, 228);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-  /* posicao */
-  padding: 3.75rem;
-  border-radius: 10px;
-  flex: 1;
-  min-width: 0;
-  color: white;
-}
 
-.button-cash2.hover {
-  background-color: #a8d0f0;
-}
 
-.nota-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
 
-.quantidade {
-  margin-top: 1rem;
-  text-align: center;
-  -ms-flex-align: center;
-  display: flex;
-}
-
-.quantidade label {
-  font-size: 14px;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.quantidade input {
-  width: 60px;
-  padding: 4px;
-  text-align: center;
-  outline: auto;
-}
 
 .label-deposit {
   text-align: center;
@@ -209,19 +181,78 @@ header {
   padding-inline: 3rem;
 }
 
+
+
+/* Selecao das cedulas */
+.botao-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2.6rem;
+  align-items: flex-start;
+}
 .selecionar {
-  width: 100%;
   background-color: #d0e7ff;
+  padding: 2rem;
+  font-size: 24px;
+  color: black;
+  border: 3px solid #3498db;
+  border-radius: 20px;
+  text-align: left;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 300px;
+  margin-left:3rem;
+  margin-top: -0.5rem;
+}
+
+.nota-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 0 8px;
+}
+.button-cash2 {
+  width: 160px;
+  height: 120px;
+  background-color: #3498db;
+  border-radius: 8px;
+  outline: 8px solid #a8d0f0;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  font-size: 24px;
 }
 
-.meme{
-  cursor: pointer;
+.quantidade {
+  display: flex;
+  align-items: center; /* já está presente */
+  justify-content: space-between;
+  width: 100px;
+  gap: 4px;
 }
+.quantidade span {
+  font-size: 20px;
+  white-space: nowrap;
+  background-color: #d6eaff;
+  border-radius: 5px;
+  padding: 4px 8px;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+.quantidade input {
+  width: 45px;
+  height: 38px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-top: 15px;
+}
+/* Quantidade_de_Notas */
 
 /* Formatacao Botao de Alerta */
 .modal-overlay {
@@ -276,3 +307,7 @@ header {
   background-color: #0d47a1;
 }
 /* Formatacao Botao de Alerta */
+
+.meme{
+  cursor: pointer;
+}
