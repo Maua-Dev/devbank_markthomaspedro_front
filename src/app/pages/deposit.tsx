@@ -1,5 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { API_URL } from "../environment";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
+type depositResponse = {
+  "2": number
+  "5": number
+  "10": number
+  "20": number
+  "50": number
+  "100": number
+  "200": number
+}
+
+type userResponse = {
+  name: string
+  agency: string
+  account: string
+  current_balance: number
+}
+
 
 const denominations = [
   { value: 2, label: "2 R$" },
@@ -12,96 +32,132 @@ const denominations = [
 ];
 const Depositar = () => {
   const navigate = useNavigate();
+  const [deposit, setDeposit] = useState<depositResponse>();
+  const [usuario, setUsuario] = useState<userResponse>();
   const [Quantity, SetQuantity] = useState<Record<number, number>>({});
-  const SaldoAtual = 0;
-  const Q2 = 0;
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+
+  async function getUsuario() {
+    const dados = await fetch(API_URL, {
+      method: "GET"
+    })
+
+    const response = (await dados.json()) as userResponse
+    setUsuario(response)
+  }
+
+  async function postDeposit() {
+    try {
+      const response = await fetch(API_URL + "/deposit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Quantity),
+      });
+
+      if (response.status === 403) {
+        setShowErrorModal(true);
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error("Erro no depósito");
+      }
+
+      const data = await response.json();
+      setDeposit(data);
+      setUsuario((prev) => prev ? { ...prev, current_balance: data.current_balance } : prev);
+      setShowSuccessModal(true);
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao realizar depósito.");
+    }
+  }
+
+
+  useEffect(() => { getUsuario() }, [])
 
   return (
     <body>
       <header>
         <div className="logo">DEV BANK</div>
+        <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
+        <button className="voltar" onClick={postDeposit}>Depositar</button>
         <div className="user-info">
-          Nome: Mark <br />
-          Agência: 0000
-          <br />
-          Conta: 00000-0
-          <br />
+          <div><b>Nome:</b> {usuario?.name}</div>
+          <div><b>Agência:</b> {usuario?.agency}</div>
+          <div><b>Conta:</b> {usuario?.account}</div>
         </div>
       </header>
       <div className="label-deposit">
-        <label>
-          <div className="deposit">Saldo Atual: 000</div>
-          <div className="quantity"> Quantidade Depositada: 000</div>
-          <div className="quantity"> Total: 000</div>
+        <label className="label">
+          <div className="deposit"><b>Saldo:</b> R$ {usuario?.current_balance}</div>
+          <div className="quantity">
+            Quantidade Depositada:{" "}
+            {Object.entries(Quantity).reduce(
+              (total, [val, qty]) => total + Number(val) * qty,
+              0
+            )}{" "}
+            R$
+          </div>
+
         </label>
       </div>
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "#d0e7ff",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "50px",
-        }}
-      >
-        <span style={{ fontSize: 24 }}>
+      <div>
+        <span className="selecionar">
           selecione a quantidade a ser depositada
         </span>
       </div>
       <div className="botao-container">
-        <div className="nota-item">
-          <button className="button-cash2">2 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
+        {denominations.map((denom) => (
+          <div key={denom.value} className="nota-item">
+            <button className="button-cash2">{denom.label}</button>
+            <div className="quantidade">
+              <label className="label">Quantidade</label>
+              <input
+                type="number"
+                min="0"
+                value={Quantity[denom.value] || 0}
+                onChange={(e) => {
+                  const val = parseInt(e.target.value) || 0;
+                  SetQuantity((prev) => ({ ...prev, [denom.value]: val }));
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <div className="nota-item">
-          <button className="button-cash2">5 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
-          </div>
-        </div>
-        <div className="nota-item">
-          <button className="button-cash2">10 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
-          </div>
-        </div>
+        ))}
       </div>
-      <div className="botao-container">
-        <div className="nota-item">
-          <button className="button-cash2">20 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
+
+      {/* ALERTA DE DEPÓSITO SUSPEITO */}
+      {showErrorModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-icon">⚠️</div>
+            <h2 className="modal-title">Erro!</h2>
+            <p className="modal-message">Depósito suspeito</p>
+            <button onClick={() => setShowErrorModal(false)} className="modal-button">
+              Ok
+            </button>
           </div>
         </div>
-        <div className="nota-item">
-          <button className="button-cash2">500 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
+      )}
+
+      {showSuccessModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-icon">🎉</div>
+            <h2 className="modal-title">Sucesso !!!</h2>
+            <p className="modal-message">Deposito realizado</p>
+            <button onClick={() => setShowSuccessModal(false)} className="modal-button">
+              Ok
+            </button>
           </div>
         </div>
-        <div className="nota-item">
-          <button className="button-cash2">100 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
-          </div>
-        </div>
-        <div className="nota-item">
-          <button className="button-cash2">200 R$</button>
-          <div className="quantidade">
-            <label>Quantidade</label>
-            <input type="number" min="0" />
-          </div>
-        </div>
-      </div>
+      )}
+
     </body>
   );
 };
