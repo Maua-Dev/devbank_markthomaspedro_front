@@ -82,10 +82,8 @@ const retirar = () => {
 
   return (
     <body>
-      <header>
+      <header className="header">
         <div className="logo">DEV BANK</div>
-        <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
-        <button className="voltar" onClick={postWithdraw}>Sacar</button>
         <div className="user-info">
           <div><b>Nome:</b> {usuario?.name}</div>
           <div><b>Agência:</b> {usuario?.agency}</div>
@@ -94,8 +92,8 @@ const retirar = () => {
       </header>
       <div className="label-deposit">
         <label className="label">
-          <div className="deposit"><b>Saldo:</b> R$ {usuario?.current_balance}</div>
-          <div className="quantity">
+          <div className="saldo"><b>Saldo:</b> R$ {usuario?.current_balance}</div>
+          <div className="saldo">
             Quantidade Sacada:{" "}
             {Object.entries(Quantity).reduce(
               (total, [val, qty]) => total + Number(val) * qty,
@@ -106,17 +104,15 @@ const retirar = () => {
 
         </label>
       </div>
-      <div>
+      <div className="botao-container">
         <span className="selecionar">
           Selecione a quantidade a ser sacada
         </span>
-      </div>
-      <div className="botao-container">
         {denominations.map((denom) => (
           <div key={denom.value} className="nota-item">
             <button className="button-cash2">{denom.label}</button>
             <div className="quantidade">
-              <label className="label">Quantidade</label>
+              <span>Quantidade</span>
               <input
                 type="number"
                 min="0"
@@ -129,6 +125,10 @@ const retirar = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="voltar-espacamento">
+        <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
+        <button className="voltar" onClick={postWithdraw}>Sacar</button>
       </div>
 
       {/* ALERTA DE DEPÓSITO SUSPEITO */}

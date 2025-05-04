@@ -48,13 +48,13 @@ const transacoes = () => {
     const date = new Date(timestamp);
     return date.toLocaleString("pt-BR");
   }
-  
+
   useEffect(() => { getHist() }, [])
   useEffect(() => { getUsuario() }, [])
 
   return (
     <body>
-      <header>
+      <header className="header">
         <div className="logo"><span>DEV</span> BANK</div>
         <div className="user-info">
           <div><b>Nome:</b> {usuario?.name}</div>
@@ -62,7 +62,7 @@ const transacoes = () => {
           <div><b>Conta:</b> {usuario?.account}</div>
         </div>
       </header>
-      
+
       <div className="main">
         <label className="label">Histórico de Transações</label>
 
@@ -75,9 +75,10 @@ const transacoes = () => {
           </div>
         ))}
 
-        <button className="voltar" onClick={() => navigate("/")}>
-          Voltar
-        </button>
+        <div className="voltar-espacamento">
+          <button className="voltar" onClick={() => navigate("/")}>Voltar</button>
+        </div>
+
       </div>
     </body>
   );
